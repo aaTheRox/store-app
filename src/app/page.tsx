@@ -5,6 +5,7 @@ import FeaturedProducts from "./components/FeaturesProducts";
 import BannerDiscount from "./components/BannerDiscount";
 import Categories from "./components/Categories";
 import BannerProduct from "./banner-product";
+import Newsletter from "./components/Newsletter";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <BannerDiscount />
         <Categories />
         <BannerProduct />
+        <Newsletter />
     </main>
   );
 }

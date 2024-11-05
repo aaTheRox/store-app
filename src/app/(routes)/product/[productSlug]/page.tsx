@@ -9,26 +9,24 @@ import IProductType from "../../../../../types/product";
 import { Input } from "@/app/components/ui/input";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/app/components/ui/accordion";
 import { Separator } from "@/app/components/ui/separator";
-import { ProductImagesSlider } from "../components/carousel-images";
+
+import ProductImagesSlider from "../../../components/carousel-images";
+
 
 export default function Page() {
     const params = useParams()
-    const { productSlug } = params 
+    const { productSlug } = params
 
     const { result, loading } = useGetProduct(productSlug)
     const product: IProductType = result
     return (
         <Container>
             {result && (
+
                 <div className="flex flex-row gap-10">
                     <div className="basis-2/3">
-                    <div>
-                        <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${result.images[0].url}`} alt="" />
-                    </div>
 
-                    <ProductImagesSlider />
-
-
+                        <ProductImagesSlider images={product.images} />
 
                         <div className="mt-10">
                             <Accordion type="single" collapsible>
@@ -57,13 +55,13 @@ export default function Page() {
                         </div>
 
                         <div className="pt-5 space-y-5">
-                        <Separator />
+                            <Separator />
                             <p className="text-md">{product.productDescription}</p>
                         </div>
 
                         <div className="pt-5 space-y-5">
                             <Separator />
-                            <button className={buttonVariants({ size: 'fw'})}><Plus size={40} strokeWidth={3} />Añadir al carrito</button>
+                            <button className={buttonVariants({ size: 'fw' })}><Plus size={40} strokeWidth={3} />Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
