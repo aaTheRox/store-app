@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productName": {
+      "type": "string",
+      "required": true
+    },
+    "productDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "productName",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "xs",
+        "s",
+        "m",
+        "l",
+        "xl",
+        "xxl"
+      ]
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "negro",
+        "blanco",
+        "azul marino",
+        "gris",
+        "beige",
+        "marron",
+        "oliva",
+        "camel",
+        "borgona",
+        "verde esmeralda",
+        "mostaza",
+        "lavanda",
+        "rojo intenso",
+        "fucsia",
+        "turquesa",
+        "naranja brillante"
+      ]
+    },
+    "old_price": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banner_texts",
+  "info": {
+    "singularName": "banner-text",
+    "pluralName": "banner-texts",
+    "displayName": "BannerText"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
