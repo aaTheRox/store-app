@@ -5,7 +5,7 @@ import IconButton from "./IconButton";
 import { useCart } from "../../../hooks/use-cart";
 import Link from "next/link";
 import formatPrice from "@/lib/formatPrice";
-
+import Image from "next/image";
 type ProductProps = {
   products?: IProductType;
   data: IProductType;
@@ -24,12 +24,11 @@ const Product = (props: ProductProps) => {
         >
           <div className="relative flex items-center justify-center ">
             <Link href={`product/${props.data.slug}`}>
-              <img
-                className=" w-full object-cover"
-                src={
-                  "https://aynadesign.com/cdn/shop/files/image00012_0e3d74d8-cf87-4394-8b9a-489409f03875_720x.jpg?v=1734256329"
-                }
+              <Image
+                src={productImage}
                 alt={props.data.images[0]?.alternativeText}
+                width={280}
+                height={800}
               />
 
               {props.data.old_price !== null && (

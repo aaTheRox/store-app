@@ -15,6 +15,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/components/ui/select";
+import ProductQuantity from "../product/components/product-quantity";
+
+const totalPrice = 16.55;
 
 export default function Page() {
   const router = useRouter();
@@ -27,70 +30,71 @@ export default function Page() {
 
   return (
     <Container>
-      <div className="flex gap-4 mt-10 pb-4 border-b-gray-200 border-b-[1px]">
+      <div className="flex gap-4 text-center pb-4 border-b-gray-200 border-b-[1px] items-center justify-center">
         <LucideShoppingBag />
-        <h3 className="text-xl text-bold">Carrito</h3>
+        <h3 className="text-4xl text-bold">Carrito</h3>
       </div>
-      {items.map((product: IProductType) => (
-        <table className="w-full">
-          <tbody>
+
+      <div className="mt-10">
+        <table className=" mx-auto w-full">
+          <thead>
             <tr>
-              <td className="w-[150px]">
-                <img
-                  className="w-32 bg-contain"
-                  src={
-                    process.env.NEXT_PUBLIC_BACKEND_URL + product.images[0].url
-                  }
-                  alt=""
-                />
-              </td>
-              <td className="w-[250px]">
-                <h4 className="text-md">
-                  {product.productName} {product.size ? "/" + product.size : ""}
-                </h4>
-                <span className="text-sm">{formatPrice(product.price)}</span>
-              </td>
-              <td>
-                <Select
-                  onValueChange={(quantity) =>
-                    handleQuantity(product.id, Number(quantity))
-                  }
-                >
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Cantidad" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem
-                        onClick={() => console.log("sksjs")}
-                        value="0"
-                      >
-                        Eliminar
-                      </SelectItem>
-                      <SelectItem value="1">1</SelectItem>
-                      <SelectItem value="2">2</SelectItem>
-                      <SelectItem value="3">3</SelectItem>
-                      <SelectItem value="4">4</SelectItem>
-                      <SelectItem value="5">5</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </td>
+              <th>Producto</th>
+              <th>Talla/Color</th>
+              <th>Cantidad</th>
             </tr>
+          </thead>
+          <tbody>
+            {items.map((product: IProductType) => (
+              <tr>
+                <td>
+                  <img
+                    className="w-44 bg-contain"
+                    src={
+                      process.env.NEXT_PUBLIC_BACKEND_URL +
+                      product.images[0].url
+                    }
+                    alt=""
+                  />
+                </td>
+                <td className="">
+                  <h4 className="text-md">
+                    {product.productName}{" "}
+                    {product.size ? "/" + product.size : ""}
+                  </h4>
+                  <span className="text-sm">{formatPrice(product.price)}</span>
+                </td>
+                <td>
+                  <ProductQuantity value="0" />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
-      ))}
 
-      {items.length > 0 ? (
-        <button
-          onClick={() => router.push("/checkout")}
-          className={buttonVariants({ className: "w-full mb-5 mt-5" })}
-        >
-          <LucideLock /> Tramitar pedido
-        </button>
-      ) : (
-        <p className="mt-5">No tienes nada en el carrito</p>
-      )}
+        <div className="mt-10">
+          <div className="text-right">
+            <p className="text-3xl text-primary">{formatPrice(totalPrice)}</p>
+            <p className="text-xs text-gray-600">
+              Impuestos incluidos. Se calculará el precio del envío al final del
+              pedido.
+            </p>
+            {items.length > 0 ? (
+              <button
+                onClick={() => router.push("/checkout")}
+                className={buttonVariants({
+                  className: "max-w-screen-md mb-5 mt-5",
+                  size: "lg",
+                })}
+              >
+                <LucideLock /> Tramitar pedido
+              </button>
+            ) : (
+              <p className="mt-5">No tienes nada en el carrito</p>
+            )}
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }

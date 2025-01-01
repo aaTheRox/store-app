@@ -1,5 +1,5 @@
 "use client";
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { Heart, Search, ShoppingCart, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import MenuList from "./menu-list";
 import MenuListMobile from "./menu-list-mobile";
@@ -39,12 +39,19 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-between gap-2 sm:gap-7">
-          <ShoppingCart
-            strokeWidth="1"
-            className="cursor-pointer"
-            data-dialog-target="modal"
-            onClick={handleOpenShoppingBag}
-          />
+          <Search strokeWidth={1} />
+
+          <div className="relative">
+            <ShoppingCart
+              strokeWidth="1"
+              className="cursor-pointer"
+              data-dialog-target="modal"
+              onClick={handleOpenShoppingBag}
+            />
+            <span className="bg-black p-1.5 rounded-2xl -top-2.5 shadow-md absolute -left-2 text-white text-[9px]">
+              0
+            </span>
+          </div>
           <Heart
             strokeWidth="1"
             className="cursor-pointer"

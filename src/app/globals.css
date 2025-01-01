@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+img {
+  height: inherit;
+  width: inherit;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -55,4 +60,4 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-} /*# sourceMappingURL=globals.css.map */
+}/*# sourceMappingURL=globals.css.map */
